@@ -3,11 +3,12 @@ const ErrorHandeler = require('./helpers/errorhandeler')
 const app = express()
 const port = 5000
 const db = require('./server')
+const getAlldataRoute = require('./routes/getAlldata.route')
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
-
+app.use('/api/v1',getAlldataRoute)
 db.databaseConnection()
 // not found
 app.all("*", (req, res) => {
